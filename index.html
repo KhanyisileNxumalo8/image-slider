@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My image slider</title>
+<style>
+   
+
+body {
+        background: linear-gradient(to bottom left, #0ec497, #d3ad06);
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 40px;
+        color: white;
+        
+    }
+
+    h1 {
+        font-size: 35px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        color: #fff;
+        text-align: center ;
+    }
+
+   div{
+    width: 310px;          /* slightly bigger than image */
+    height: 210px;
+    background-color: rgb(223, 18, 172);   /* border background color */
+    padding: 5px;             /* makes the background visible */
+    border-radius: 5px;       /* smooth corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;            /* center the container */
+}
+
+
+    #slider {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+       
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 20px 10px;
+        cursor: pointer;
+        color: white;
+        background: rgba(204, 10, 172, 0.2);
+        border: 2px solid rgb(211, 9, 160);
+        border-radius: 10px;
+        font-size: 15px;
+        backdrop-filter: blur(3px);
+        transition: 0.3s;
+    }
+
+</style>
+
+</head>
+<body>
+
+<h1>Views Image Slider</h1>
+
+<div>
+    <img id="slider" src="https://images.pexels.com/photos/1575861/pexels-photo-1575861.jpeg"></img>
+</div>
+
+<br>
+
+<button id="back">⬅ Back</button>
+<button id="next" >Next ➡</button>
+
+
+<script>
+let images=["https://images.pexels.com/photos/1575861/pexels-photo-1575861.jpeg", "https://theinsatiabletraveler.com/wp-content/uploads/Cruising-the-Great-Bear-Rainforest-2-600x400.jpg", "https://theinsatiabletraveler.com/wp-content/uploads/Breathtaking-views-114620191204-600x400.jpg","https://theinsatiabletraveler.com/wp-content/uploads/2019/05/Breathtaking_Views_-14.jpg",
+    "https://i.insider.com/5d2350be21a8612d236e24fa?width=800&format=jpeg&auto=webp"];
+
+    
+
+let index=0;
+document.getElementById("back").addEventListener("click",function(){
+    index=(index -1 + images.length) % images.length;
+    document.getElementById("slider").src=images[index];
+})
+
+
+document.getElementById("next").addEventListener("click",function(){
+    index=(index + 1)% images.length;
+    document.getElementById("slider").src=images[index];
+    })
+    setInterval(() => {
+    index = (index + 1) % images.length;
+    slider.src = images[index];
+}, 2000);
+</script>
+
+</body>
+</html>
